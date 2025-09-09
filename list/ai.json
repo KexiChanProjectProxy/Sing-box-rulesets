@@ -44,7 +44,11 @@
                 "o33249.ingest.sentry.io",
                 "events.statsigapi.net",
                 "api.mixpanel.com",
-                "browser-intake-datadoghq.com"
+                "browser-intake-datadoghq.com",
+                "cursor-cdn.com",
+                "cursor.com",
+                "cursor.sh",
+                "cursorapi.com"
             ]
         }
     ]
