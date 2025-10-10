@@ -23,4 +23,3 @@ find list -type f -name '*.json' -print0 | while IFS= read -r -d '' file; do
   sing-box rule-set compile --output "${output}" "${file}"
 done
 ```
-#
