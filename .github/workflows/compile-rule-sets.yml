@@ -1,0 +1,61 @@
+name: Compile sing-box rule sets
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'list/**/*.json'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - 'list/**/*.json'
+      - '.github/workflows/**'
+
+jobs:
+  compile:
+    if: github.actor != 'github-actions[bot]'
+    name: Compile rule sets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install sing-box
+        run: |
+          set -euo pipefail
+          curl -fsSL https://sing-box.app/install.sh | sudo bash
+
+      - name: Compile JSON rule sets
+        run: |
+          set -euo pipefail
+          mkdir -p ruleset
+          find list -type f -name '*.json' -print0 | while IFS= read -r -d '' file; do
+            rel="${file#list/}"
+            output="ruleset/${rel%.json}.srs"
+            mkdir -p "$(dirname "${output}")"
+            sing-box rule-set compile --output "${output}" "${file}"
+          done
+
+      - name: Configure Git
+        if: github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit compiled rule sets
+        if: github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          if git status --short ruleset | grep -q '.'; then
+            git add ruleset
+            git commit -m "Update compiled sing-box rule sets"
+          else
+            echo "No compiled rule-set changes to commit"
+          fi
+
+      - name: Push changes
+        if: github.event_name == 'push'
+        run: git push
