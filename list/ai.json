@@ -30,6 +30,7 @@
                 "perplexity.com",
                 "chat.openai.com",
                 "ios.chat.openai.com",
+                "apple-relay.apple.com",
                 "api.openai.com",
                 "cloudflare-ech.com",
                 "openai.com",
@@ -52,4 +53,5 @@
             ]
         }
     ]
+
 }
