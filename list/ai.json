@@ -31,6 +31,8 @@
                 "chat.openai.com",
                 "ios.chat.openai.com",
                 "apple-relay.apple.com",
+                "apple-relay.cloudflare.com",
+                "apple-relay",
                 "api.openai.com",
                 "cloudflare-ech.com",
                 "openai.com",
@@ -55,3 +57,4 @@
     ]
 
 }
+
