@@ -49,10 +49,17 @@
                 "cursor-cdn.com",
                 "cursor.com",
                 "cursor.sh",
-                "cursorapi.com"
+                "cursorapi.com",
+                "gemini.google.com",
+                "proactivebackend-pa.googleapis.com",
+                "aisandbox-pa.googleapis.com",
+                "robinfrontend-pa.googleapis.com",
+                "aistudio.google.com",
+                "alkalimakersuite-pa.clients6.google.com",
+                "generativelanguage.googleapis.com",
+                "alkalicore-pa.clients6.google.com",
+                "waa-pa.clients6.google.com"
             ]
         }
     ]
-
 }
-
